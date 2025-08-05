@@ -1,9 +1,17 @@
 import React from 'react'
+import Introduction from '../components/aboutme/Introduction'
+import Workexperience from '../components/aboutme/Workexperience'
+import SkillMarquee from '../components/aboutme/SkillMarquee'
+import ProjectCarousel from '../components/aboutme/Projectcarousel'
+
 
 const Home = () => {
   return (
     <div>
-        <h1>Home Page</h1>
+       <Introduction/>
+       <Workexperience/>
+       <SkillMarquee/>
+       <ProjectCarousel/>
     </div>
   )
 }
