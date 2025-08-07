@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Container, Grid, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import ProjectCard from "../../common/ProjectCard";
 
 const projects = [
@@ -37,18 +38,53 @@ const ProjectComponent = () => {
   return (
     <Container
       sx={{
-        padding: 1,
+        py: { xs: 3, sm: 4, md: 5 },
+        px: { xs: 2, sm: 3, md: 4 },
       }}
     >
-      <Typography variant="h4">Projects</Typography>
-      <Typography variant="h6" sx={{ mb: 3 }}>
-        Here are some projects of which I'm really proud. Most of them are
-        open-source, so feel free to check out the code and contribute if you're
-        interested!
-      </Typography>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
+            fontWeight: "bold",
+            color: "#000",
+            mb: 2,
+          }}
+        >
+          Projects
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            mb: 4,
+            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+            color: "#000",
+          }}
+        >
+          Here are some projects of which I'm really proud. Most of them are
+          open-source, so feel free to check out the code and contribute if you're
+          interested!
+        </Typography>
+      </motion.div>
       <Grid container spacing={3}>
         {projects.map((project, index) => (
-          <Grid item xs={12} md={10} lg={8} key={index}>
+          <Grid
+            item
+            xs={12}
+            md={10}
+            lg={8}
+            key={index}
+            component={motion.div}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.02 }}
+          >
             <ProjectCard
               title={project.title}
               description={project.description}
@@ -59,24 +95,28 @@ const ProjectComponent = () => {
               <Grid
                 item
                 xs={12}
-                sx={{ display: "flex", justifyContent: "center", mt: 3 }}
+                sx={{ display: "flex", justifyContent: "center", mt: 4 }}
               >
                 <Button
                   variant="contained"
                   href="https://github.com/yashdabhi1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
-                    backgroundColor: "#e6dbc7",
-                    color: "#000",
+                    backgroundColor: "#1976d2",
+                    color: "#fff",
                     borderRadius: "8px",
                     textTransform: "none",
                     fontWeight: "bold",
                     padding: "8px 16px",
                     transition: "all 0.3s ease",
+                    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
                     "&:hover": {
-                      backgroundColor: "#d5cbb8",
+                      backgroundColor: "#1565c0",
                       transform: "scale(1.05)",
                     },
                   }}
+                  aria-label="Explore more projects on GitHub"
                 >
                   Explore More Projects
                 </Button>

@@ -95,15 +95,16 @@ const BlogComponent = () => {
           target="_blank"
           rel="noopener noreferrer"
           sx={{
-            backgroundColor: "#e6dbc7",
-            color: "#000",
+            backgroundColor: "#1976d2",
+            color: "#fff",
             borderRadius: "8px",
             textTransform: "none",
             fontWeight: "bold",
             padding: "8px 16px",
             transition: "all 0.3s ease",
+            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
             "&:hover": {
-              backgroundColor: "#d5cbb8",
+              backgroundColor: "#1565c0",
               transform: "scale(1.05)",
             },
           }}
