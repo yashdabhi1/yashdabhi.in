@@ -22,13 +22,15 @@ const Navbar = () => {
       elevation={1} 
       sx={{ 
         backdropFilter: 'blur(10px)',
-        backgroundColor: 'Transparent',
-        width: '60%', 
-        margin: '0 auto',
-        mt: '10px',
-        borderRadius: '8px',
-        left: 0,
-        right: 0
+        backgroundColor: 'transparent',
+        width: isMobile ? '100%' : '60%', 
+        margin: isMobile ? 0 : '0 auto', 
+        mt: isMobile ? '10px' : '10px', 
+        borderRadius: isMobile ? '8px' : '8px',
+        left: 0, 
+        right: 0, 
+        marginLeft: isMobile ? '10px' : 'auto', 
+        marginRight: isMobile ? '10px' : 'auto', 
       }}
     >
       <Toolbar>
@@ -59,7 +61,7 @@ const Navbar = () => {
                 '& .MuiDrawer-paper': {
                   backgroundColor: 'transparent',
                   backdropFilter: 'blur(10px)',
-                  width: '100%',
+                  width: '100%', // Full width for the drawer
                   top: '64px',
                 }
               }}
