@@ -23,14 +23,13 @@ const Navbar = () => {
       sx={{ 
         backdropFilter: 'blur(10px)',
         backgroundColor: 'transparent',
-        width: isMobile ? '100%' : '60%', 
-        margin: isMobile ? 0 : '0 auto', 
-        mt: isMobile ? '10px' : '10px', 
-        borderRadius: isMobile ? '8px' : '8px',
-        left: 0, 
-        right: 0, 
-        marginLeft: isMobile ? '10px' : 'auto', 
-        marginRight: isMobile ? '10px' : 'auto', 
+        width: isMobile ? 'calc(100% - 20px)' : '60%', 
+        margin: '0 auto', 
+        mt: '10px', 
+        borderRadius: '8px',
+        overflow: 'hidden', // Added to prevent overflow cutting off radius
+        left: 0,
+        right: 0,
       }}
     >
       <Toolbar>
@@ -61,16 +60,14 @@ const Navbar = () => {
                 '& .MuiDrawer-paper': {
                   backgroundColor: 'transparent',
                   backdropFilter: 'blur(10px)',
-                  width: '100%', // Full width for the drawer
-                  top: '64px',
+                  width: '100%',
                 }
               }}
             >
               <Box 
                 sx={{ 
                   width: '100%', 
-                  display: 'flex',
-                  color: 'black', 
+                  display: 'flex', 
                   flexDirection: 'column', 
                   alignItems: 'center',
                   pt: 2,

@@ -11,7 +11,8 @@ const Footer = () => {
         py: { xs: 2, sm: 3, md: 4 }, 
         textAlign: 'center',
         width: '60%', // Full width on all screens
-        margin: '0 auto'
+        margin: '0 auto',
+        
       }}
     >
       <Container maxWidth="lg">
@@ -61,14 +62,14 @@ const Footer = () => {
           </Stack>
         </Box>
         <Typography 
-          variant="body2" 
+          variant="body1" 
           color="text.secondary" 
           sx={{ 
             mt: { xs: 1, sm: 2 },
             fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' } // Responsive font size
           }}
         >
-          &copy; 2025 Yash Dabhi. All rights reserved.
+          &copy; 2025 Yash Dabhi. All rights reserved. Made with ❤️ for the Salesforce community.
         </Typography>
       </Container>
     </Box>

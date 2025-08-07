@@ -29,8 +29,10 @@ const SkillMarquee = () => {
           border: "1px solid #f0f0f0",
           backgroundColor: "transparent",
           backdropFilter: "blur(10px)",
-          width: "100%",
-          boxShadow: "none",
+          width: { xs: "100%", md: "100%", lg: 1072 }, 
+          maxWidth: "1200px", 
+          margin: "0 auto", 
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
           borderRadius: "10px",
         }}
       >

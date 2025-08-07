@@ -18,15 +18,23 @@ const CarouselContainer = styled(Box)(({ theme }) => ({
 
 const CarouselItem = styled(Paper)(({ theme }) => ({
   minWidth: "100%",
-  height: "200px",
+  height: { xs: "150px", sm: "180px", md: "200px" }, 
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  transition: "transform 0.5s ease-in-out",
+  transition: "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
   backgroundColor: "#fff",
-  color: "Black",
+  color: "black",
   padding: theme.spacing(2),
+  opacity: 0.7,
+  "&.active": {
+    opacity: 1,
+  },
+  "&:hover": {
+    transform: "scale(1.02)", 
+    transition: "transform 0.3s ease, opacity 0.5s ease-in-out",
+  },
 }));
 
 const ProjectCarousel = () => {
@@ -64,7 +72,7 @@ const ProjectCarousel = () => {
     <Box
       sx={{
         width: "100%",
-        padding: { xs: 2, sm: 3, md: 4 },
+        px: { xs: 2, sm: 2, md: 3 }, 
       }}
     >
       <Card
@@ -72,19 +80,22 @@ const ProjectCarousel = () => {
           border: "1px solid #f0f0f0",
           backgroundColor: "transparent",
           backdropFilter: "blur(10px)",
-          width: "100%",
-          boxShadow: "none",
+          width: { xs: "100%", md: "100%", lg: 1072 }, 
+          maxWidth: "1200px", 
+          margin: "0 auto", 
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
           borderRadius: "10px",
         }}
       >
-        <CardContent sx={{ padding: { xs: 2, sm: 3, md: 4 } }}>
+        <CardContent sx={{ padding: { xs: 1, sm: 2, md: 3, lg: 4 } }}>
           <Typography
             variant="h4"
             sx={{
               color: "#000",
-              marginBottom: "10px",
+              marginBottom: { xs: "8px", sm: "10px", md: "12px" },
               display: "flex",
               alignItems: "center",
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" }, 
             }}
           >
             PROJECTS
@@ -92,24 +103,56 @@ const ProjectCarousel = () => {
           <Card
             sx={{
               border: "1px solid #f0f0f0",
-              backgroundColor: "rgb(97, 90, 90)",
+              backgroundColor: "rgb(158, 168, 193)",
               backdropFilter: "blur(10px)",
               width: "100%",
-              boxShadow: "none",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
               borderRadius: "10px",
             }}
           >
-            <CarouselContainer >
+            <CarouselContainer>
               {projects.map((project, index) => (
                 <CarouselItem
                   key={project.id}
+                  className={index === currentIndex ? "active" : ""}
                   sx={{
                     transform: `translateX(-${currentIndex * 100}%)`,
                   }}
                 >
-                  <h2>{project.title}</h2>
-                  <p>{project.description}</p>
-                  <Button variant="contained" sx={{ mt: 2 }}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                      fontWeight: "bold",
+                      mb: 1,
+                    }}
+                  >
+                    {project.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
+                      textAlign: "center",
+                      mb: 2,
+                    }}
+                  >
+                    {project.description}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      mt: 1,
+                      fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
+                      transition:
+                        "transform 0.2s ease, background-color 0.3s ease",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                        backgroundColor: "#1976d2",
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                      },
+                    }}
+                  >
                     {project.buttonText}
                   </Button>
                 </CarouselItem>

@@ -7,12 +7,12 @@ import ProjectCarousel from '../components/aboutme/Projectcarousel'
 
 const Home = () => {
   return (
-    <div>
+    <>
        <Introduction/>
        <Workexperience/>
        <SkillMarquee/>
        <ProjectCarousel/>
-    </div>
+    </>
   )
 }
 

@@ -17,7 +17,7 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
         flexDirection: { xs: "column", md: "row" },
         width: { xs: "100%", md: "1100px" },
         borderRadius: "16px",
-        backgroundColor: "#fff",
+        backgroundColor: "rgb(73, 115, 219)",
         color: "#000",
         overflow: "hidden",
         boxShadow: "0 0 10px rgba(119, 102, 102, 0.5)",

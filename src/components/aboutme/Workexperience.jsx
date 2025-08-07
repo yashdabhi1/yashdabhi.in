@@ -46,6 +46,8 @@ function Workexperience() {
             minHeight: { xs: 250, sm: 280, md: 300, lg: 320 },
             display: "flex",
             flexDirection: "column",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            borderRadius: "10px",
           }}
         >
           <CardContent>

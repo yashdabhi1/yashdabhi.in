@@ -7,7 +7,7 @@ function DownloadCV() {
     const cvUrl = "/Yash Dabhi.pdf";
     const link = document.createElement("a");
     link.href = cvUrl;
-    link.download = "Yashdabhi_CV.pdf";
+    link.download = "Yashdabhi_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -22,6 +22,8 @@ function DownloadCV() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+        borderRadius: "10px",
       }}
     >
       <CardContent>
@@ -33,7 +35,7 @@ function DownloadCV() {
             fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem", lg: "2.2rem" },
           }}
         >
-          MY STUDIO
+          Get My Resume
         </Typography>
       </CardContent>
       <CardContent>
@@ -44,23 +46,35 @@ function DownloadCV() {
             fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
           }}
         >
-          Namaste! 🙏 Abhivarde.in is more than a portfolio; it's a window into
-          my world, where passion meets purpose. Discover my work.
+          Namaste! 🙏 Explore my professional journey! Download my CV to discover my skills, experience, and projects that showcase my expertise and passion.
         </Typography>
-        <Box sx={{ textAlign: "center", mt: 2 }}>
+        <Box sx={{ textAlign: "center", mt: 5 }}>
           <Button
             variant="contained"
             startIcon={<DownloadIcon />}
             onClick={handleDownload}
             sx={{
-              backgroundColor: "#ff4500",
-              color: "#fff",
-              "&:hover": { backgroundColor: "#e03a00" },
-              width: { xs: "80%", sm: "60%", md: "50%" },
-              margin: "0 auto",
+              backgroundColor: "#fff",
+              color: "#000",
+              fontWeight: "bold",
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+              textTransform: "none",
+              padding: { xs: "10px", sm: "12px", md: "14px" },
+              width: "90%",
+              borderRadius: "8px",
+              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+              transition: "background-color 0.3s ease, transform 0.3s ease",
+              "&:hover": {
+                backgroundColor: "rgb(153, 141, 137)",
+                transform: "scale(1.02)",
+              },
+              "&:focus": {
+                outline: "2px solid rgb(153, 141, 137)",
+                outlineOffset: "2px",
+              },
             }}
           >
-            Download CV
+            Download Resume
           </Button>
         </Box>
       </CardContent>
