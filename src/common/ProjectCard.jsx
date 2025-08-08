@@ -15,12 +15,16 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
       sx={{
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
-        width: { xs: "100%", md: "1100px" , lg: "1086px" },
+        width: { xs: "100%", md: "1100px", lg: "1086px" },
         borderRadius: "16px",
-        backgroundColor: "rgb(255, 255, 255)",
-        color: "#000",
+        backgroundColor: (theme) =>
+          theme.palette.mode === "dark" ? "#1a1a1a" : "rgb(255, 255, 255)",
+        color: (theme) => theme.palette.text.primary,
         overflow: "hidden",
-        boxShadow: "0 0 10px rgba(119, 102, 102, 0.5)",
+        boxShadow: (theme) =>
+          theme.palette.mode === "dark"
+            ? "0 0 10px rgba(255, 255, 255, 0.2)"
+            : "0 0 10px rgba(119, 102, 102, 0.5)",
         margin: "auto",
       }}
     >
@@ -55,10 +59,7 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
           </Typography>
           <Typography
             variant="body2"
-            sx={{
-              color: "#000",
-              fontSize: { xs: "0.875rem", md: "1rem" },
-            }}
+            sx={{ fontSize: { xs: "0.875rem", md: "1rem" } }}
           >
             {description}
           </Typography>
@@ -75,9 +76,7 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
               borderRadius: "8px",
               textTransform: "none",
               fontWeight: "bold",
-              "&:hover": {
-                backgroundColor: "#d5cbb8",
-              },
+              "&:hover": { backgroundColor: "#d5cbb8" },
             }}
           >
             🛠 View Code

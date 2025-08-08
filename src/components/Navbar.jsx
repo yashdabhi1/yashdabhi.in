@@ -16,7 +16,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-const Navbar = () => {
+const Navbar = ({ darkModeToggle }) => {
   const isMobile = useMediaQuery("(max-width:900px)");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
@@ -35,14 +35,15 @@ const Navbar = () => {
         elevation={1}
         sx={{
           backdropFilter: "blur(10px)",
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          backgroundColor: (theme) =>
+            theme.palette.mode === "dark" ? "#1a1a1a" : "rgba(249, 249, 249, 0.1)",
           width: isMobile ? "calc(100% - 20px)" : "57%",
           margin: "0 auto",
           mt: "10px",
           borderRadius: "8px",
           overflow: "hidden",
           left: 0,
-          right: 0,
+          right: 0
         }}
       >
         <Toolbar>
@@ -53,7 +54,7 @@ const Navbar = () => {
             sx={{
               flexGrow: 1,
               textDecoration: "none",
-              color: "#000",
+              color: (theme) => theme.palette.text.primary,
               fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.8rem" },
               fontWeight: "bold",
             }}
@@ -67,11 +68,12 @@ const Navbar = () => {
                 color="inherit"
                 onClick={toggleDrawer}
                 aria-label="Open navigation menu"
+                sx={{ color: (theme) => theme.palette.text.primary }}
               >
                 <MenuIcon
                   sx={{
                     fontSize: { xs: "1.5rem", sm: "1.8rem" },
-                    color: "#000",
+                    color: (theme) => theme.palette.text.primary,
                   }}
                 />
               </IconButton>
@@ -81,8 +83,13 @@ const Navbar = () => {
                 onClose={toggleDrawer}
                 sx={{
                   "& .MuiDrawer-paper": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    backdropFilter: "blur(10px)",
+                    backdropFilter: "blur(5px)",
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === "dark" ? "#1a1a1a" : "rgba(249, 249, 249, 0.1)",
+                    boxShadow: (theme) =>
+                      theme.palette.mode === "dark"
+                        ? "0 4px 8px rgba(255, 255, 255, 0.2)"
+                        : "0 0 10px rgba(0, 0, 0, 0.2)",
                     width: "100%",
                   },
                 }}
@@ -119,7 +126,7 @@ const Navbar = () => {
                             sx={{
                               "& .MuiTypography-root": {
                                 fontSize: { xs: "1rem", sm: "1.2rem" },
-                                color: "#000",
+                                color: (theme) => theme.palette.text.primary,
                                 fontWeight: "medium",
                               },
                             }}
@@ -127,6 +134,7 @@ const Navbar = () => {
                         </ListItem>
                       ))}
                     </List>
+                    {darkModeToggle}
                   </Box>
                 </motion.div>
               </Drawer>
@@ -141,11 +149,15 @@ const Navbar = () => {
                   color="inherit"
                   sx={{
                     fontSize: { sm: "0.9rem", md: "1rem" },
-                    color: "#000",
+                    color: (theme) => theme.palette.text.primary,
                     textTransform: "none",
                     "&:hover": {
-                      backgroundColor: "rgb(116, 121, 139)",
-                      boxShadow: "0 2px 4px  rgba(151, 157, 177)",
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === "dark" ? "#333" : "rgb(116, 121, 139)",
+                      boxShadow: (theme) =>
+                        theme.palette.mode === "dark"
+                          ? "0 2px 4px rgba(255, 255, 255, 0.2)"
+                          : "0 2px 4px rgba(151, 157, 177, 0.5)",
                       transform: "scale(1.05)",
                     },
                   }}
@@ -154,6 +166,7 @@ const Navbar = () => {
                   {label}
                 </Button>
               ))}
+              {darkModeToggle}
             </Box>
           )}
         </Toolbar>

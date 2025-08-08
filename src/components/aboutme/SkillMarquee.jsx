@@ -33,24 +33,33 @@ const SkillMarquee = () => {
       >
         <Card
           sx={{
-            border: "1px solid #f0f0f0",
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            backgroundColor: (theme) =>
+              theme.palette.mode === "dark"
+                ? "#1a1a1a"
+                : "rgba(255, 255, 255, 0.1)",
             backdropFilter: "blur(10px)",
             width: { xs: "100%", md: "100%", lg: 1072 },
             maxWidth: "1200px",
             margin: "0 auto",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            boxShadow: (theme) =>
+              theme.palette.mode === "dark"
+                ? "0 4px 12px rgba(255, 255, 255, 0.15)"
+                : "0 4px 12px rgba(0, 0, 0, 0.15)",
             borderRadius: "12px",
           }}
         >
           <CardContent sx={{ padding: { xs: 3, sm: 4, md: 5 } }}>
             <Typography
               variant="h4"
+              gutterBottom
               sx={{
-                color: "#000",
-                marginBottom: "16px",
-                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
-                fontWeight: "bold",
+                color: (theme) => theme.palette.text.primary,
+                fontSize: {
+                  xs: "1.5rem",
+                  sm: "1.8rem",
+                  md: "2rem",
+                  lg: "2.2rem",
+                },
               }}
             >
               SKILLS
@@ -76,14 +85,18 @@ const SkillMarquee = () => {
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    backgroundColor: "#fff",
-                    color: "#000",
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === "dark" ? "#333" : "#fff",
+                    color: (theme) => theme.palette.text.primary,
                     padding: "8px 16px",
                     margin: "0 10px",
                     borderRadius: "20px",
                     fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
                     fontWeight: "500",
-                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                    boxShadow: (theme) =>
+                      theme.palette.mode === "dark"
+                        ? "0 2px 4px rgba(255, 255, 255, 0.1)"
+                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
                   }}
                   whileHover={{ scale: 1.1, backgroundColor: "#e6dbc7" }}
                 >
@@ -112,14 +125,18 @@ const SkillMarquee = () => {
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    backgroundColor: "#fff",
-                    color: "#000",
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === "dark" ? "#333" : "#fff",
+                    color: (theme) => theme.palette.text.primary,
                     padding: "8px 16px",
                     margin: "0 10px",
                     borderRadius: "20px",
                     fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
                     fontWeight: "500",
-                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                    boxShadow: (theme) =>
+                      theme.palette.mode === "dark"
+                        ? "0 2px 4px rgba(255, 255, 255, 0.1)"
+                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
                   }}
                   whileHover={{ scale: 1.1, backgroundColor: "#e6dbc7" }}
                 >

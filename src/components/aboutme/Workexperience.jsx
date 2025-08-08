@@ -52,15 +52,19 @@ function Workexperience() {
         >
           <Card
             sx={{
-              backgroundColor: "transparent",
+              backgroundColor: (theme) =>
+                theme.palette.mode === "dark" ? "#1a1a1a" : "transparent",
               backdropFilter: "blur(10px)",
-              color: "black",
+              color: (theme) => theme.palette.text.primary,
               flex: 1,
               width: { xs: "100%", sm: "90%", md: 450, lg: 500 },
               minHeight: { xs: 250, sm: 280, md: 300, lg: 320 },
               display: "flex",
               flexDirection: "column",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              boxShadow: (theme) =>
+                theme.palette.mode === "dark"
+                  ? "0 4px 8px rgba(255, 255, 255, 0.2)"
+                  : "0 4px 8px rgba(0, 0, 0, 0.2)",
               borderRadius: "10px",
             }}
           >
@@ -69,7 +73,7 @@ function Workexperience() {
                 variant="h4"
                 gutterBottom
                 sx={{
-                  color: "black",
+                  color: (theme) => theme.palette.text.primary,
                   fontSize: {
                     xs: "1.5rem",
                     sm: "1.8rem",

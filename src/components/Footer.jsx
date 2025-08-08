@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Container, Typography, IconButton, Stack } from '@mui/material';
-import { GitHub, LinkedIn, Email } from '@mui/icons-material';
-import { motion } from 'framer-motion';
+import React from "react";
+import { Box, Container, Typography, IconButton, Stack } from "@mui/material";
+import { GitHub, LinkedIn, Email } from "@mui/icons-material";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
@@ -10,9 +10,12 @@ const Footer = () => {
       sx={{
         mt: { xs: 6, sm: 7, md: 8 },
         py: { xs: 3, sm: 4, md: 5 },
-        textAlign: 'center',
-        width: '100%',
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
+        textAlign: "center",
+        width: "100%",
+        backgroundColor: (theme) =>
+          theme.palette.mode === "dark"
+            ? "#1a1a1a"
+            : "rgba(255, 255, 255, 0.1)",
         backdropFilter: "blur(10px)",
       }}
     >
@@ -24,10 +27,10 @@ const Footer = () => {
         >
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              justifyContent: 'space-around',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              justifyContent: "space-around",
+              alignItems: "center",
               mb: { xs: 2, sm: 3 },
             }}
           >
@@ -35,14 +38,18 @@ const Footer = () => {
               variant="h4"
               gutterBottom
               sx={{
-                fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' },
-                fontWeight: 'bold',
-                color: '#000',
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
+                fontWeight: "bold",
+                color: (theme) => theme.palette.text.primary,
               }}
             >
               Need a Skilled Salesforce Developer?
             </Typography>
-            <Stack direction="row" spacing={{ xs: 1, sm: 2 }} justifyContent="center">
+            <Stack
+              direction="row"
+              spacing={{ xs: 1, sm: 2 }}
+              justifyContent="center"
+            >
               <IconButton
                 href="https://github.com/yashdabhi1"
                 target="_blank"
@@ -50,8 +57,14 @@ const Footer = () => {
                 component={motion.a}
                 whileHover={{ rotate: 360, transition: { duration: 0.5 } }}
                 aria-label="Visit GitHub profile"
+                sx={{
+                  color: (theme) => theme.palette.text.primary,
+                  "&:hover": { color: "#e6dbc7" },
+                }}
               >
-                <GitHub sx={{ fontSize: { xs: '1.5rem', sm: '1.8rem', md: '2rem' }, color: '#000' }} />
+                <GitHub
+                  sx={{ fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" } }}
+                />
               </IconButton>
               <IconButton
                 href="https://linkedin.com/in/yash-dabhi1"
@@ -60,29 +73,41 @@ const Footer = () => {
                 component={motion.a}
                 whileHover={{ rotate: 360, transition: { duration: 0.5 } }}
                 aria-label="Visit LinkedIn profile"
+                sx={{
+                  color: (theme) => theme.palette.text.primary,
+                  "&:hover": { color: "#e6dbc7" },
+                }}
               >
-                <LinkedIn sx={{ fontSize: { xs: '1.5rem', sm: '1.8rem', md: '2rem' }, color: '#000' }} />
+                <LinkedIn
+                  sx={{ fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" } }}
+                />
               </IconButton>
               <IconButton
                 href="mailto:dabhiyash11111@gmail.com"
                 component={motion.a}
                 whileHover={{ rotate: 360, transition: { duration: 0.5 } }}
                 aria-label="Send email"
+                sx={{
+                  color: (theme) => theme.palette.text.primary,
+                  "&:hover": { color: "#e6dbc7" },
+                }}
               >
-                <Email sx={{ fontSize: { xs: '1.5rem', sm: '1.8rem', md: '2rem' }, color: '#000' }} />
+                <Email
+                  sx={{ fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" } }}
+                />
               </IconButton>
             </Stack>
           </Box>
           <Typography
             variant="body1"
-            color="text.secondary"
             sx={{
               mt: { xs: 2, sm: 3 },
-              fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
-              color: '#000',
+              fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+              color: (theme) => theme.palette.text.primary,
             }}
           >
-            &copy; 2025 Yash Dabhi. All rights reserved. Made with ❤️ for the Salesforce community.
+            &copy; 2025 Yash Dabhi. All rights reserved. Made with ❤️ for the
+            Salesforce community.
           </Typography>
         </motion.div>
       </Container>

@@ -8,14 +8,13 @@ const ExperienceItem = ({ image, company, title, date }) => {
         sx={{
           width: 40,
           height: 40,
-         // bgcolor: "grey.800",
-          borderRadius: 1,
           border: "1px solid #ccc",
+          borderRadius: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           mr: 2,
-          overflow: "hidden", // Ensure image fits within the box
+          overflow: "hidden",
         }}
       >
         {image}
