@@ -57,16 +57,17 @@ const BlogComponent = () => {
     <Container
       sx={{
         py: 4,
-        backgroundColor: "#fff",
-        color: "#000",
+        backgroundColor: (theme) =>
+          theme.palette.mode === "dark" ? "#1a1a1a" : "#fff",
+        color: (theme) => theme.palette.text.primary,
         borderRadius: "16px",
-        boxShadow: "0 0 10px rgba(255, 255, 255, 0.2)",
+        width: { lg: 1100 },
       }}
     >
       <Typography
         variant="h4"
         gutterBottom
-        sx={{ color: "#000", fontWeight: "bold" }}
+        sx={{ fontWeight: "bold" }}
       >
         Blog Posts
       </Typography>
@@ -77,7 +78,7 @@ const BlogComponent = () => {
       </Typography>
       <Grid container spacing={3}>
         {blogPosts.map((post, index) => (
-          <Grid item xs={12} sm={6} key={index} sx={{ width: { sm: "48%" } }}>
+          <Grid item xs={12} sm={6} key={index} sx={{ width: { sm: "48%" } }} display="flex" justifyContent="space-between">
             <BlogPost
               title={post.title}
               date={post.date}

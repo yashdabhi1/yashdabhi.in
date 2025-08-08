@@ -1,6 +1,5 @@
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import React from "react";
-
 import { motion } from "framer-motion";
 
 const Introduction = () => {
@@ -28,7 +27,10 @@ const Introduction = () => {
             width: { xs: "100%", sm: "80%", md: 300, lg: 350 },
             height: { xs: 180, sm: 220, md: 280, lg: 350 },
             maxWidth: { xs: "100%", sm: 300, lg: 350 },
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            boxShadow: (theme) =>
+              theme.palette.mode === "dark"
+                ? "0 4px 8px rgba(255, 255, 255, 0.2)"
+                : "0 4px 8px rgba(0, 0, 0, 0.2)",
             borderRadius: "10px",
           }}
         >
@@ -47,12 +49,16 @@ const Introduction = () => {
       >
         <Card
           sx={{
-            backgroundColor: "transparent",
+            backgroundColor: (theme) =>
+              theme.palette.mode === "dark" ? "#1a1a1a" : "transparent",
             backdropFilter: "blur(10px)",
-            color: "black",
+            color: (theme) => theme.palette.text.primary,
             width: { xs: "100%", sm: 500, md: 600, lg: 700 },
             height: { xs: "auto", sm: "auto", md: 300, lg: 350 },
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            boxShadow: (theme) =>
+              theme.palette.mode === "dark"
+                ? "0 4px 8px rgba(255, 255, 255, 0.2)"
+                : "0 4px 8px rgba(0, 0, 0, 0.2)",
             borderRadius: "10px",
           }}
         >
@@ -62,7 +68,6 @@ const Introduction = () => {
               gutterBottom
               sx={{
                 fontWeight: "bold",
-                color: "black",
                 fontSize: {
                   xs: "1.5rem",
                   sm: "1.8rem",
@@ -76,7 +81,6 @@ const Introduction = () => {
             <Typography
               variant="h6"
               sx={{
-                color: "black",
                 mb: 2,
                 fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
               }}
@@ -89,7 +93,6 @@ const Introduction = () => {
             <Typography
               variant="body1"
               sx={{
-                color: "black",
                 mb: 1,
                 fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
               }}

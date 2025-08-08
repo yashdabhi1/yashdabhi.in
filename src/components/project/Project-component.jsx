@@ -52,7 +52,7 @@ const ProjectComponent = () => {
           sx={{
             fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
             fontWeight: "bold",
-            color: "#000",
+            color: (theme) => theme.palette.text.primary,
             mb: 2,
           }}
         >
@@ -63,7 +63,7 @@ const ProjectComponent = () => {
           sx={{
             mb: 4,
             fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-            color: "#000",
+            color: (theme) => theme.palette.text.primary,
           }}
         >
           Here are some projects of which I'm really proud. Most of them are

@@ -10,17 +10,22 @@ const BlogPost = ({ title, date, image, background, link }) => {
       onClick={handleCardClick}
       sx={{
         display: "flex",
+
+        justifyContent: "space-between",
         flexDirection: "column",
         height: "100%",
-        background: background,
+        background: (theme) =>
+          theme.palette.mode === "dark" ? "#1a1a1a" : background,
         borderRadius: "16px",
         overflow: "hidden",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+        boxShadow: (theme) =>
+          theme.palette.mode === "dark"
+            ? "0 4px 8px rgba(255, 255, 255, 0.2)"
+            : "0 4px 8px rgba(0, 0, 0, 0.2)",
         transition: "transform 0.3s ease",
         cursor: "pointer",
-        "&:hover": {
-          transform: "scale(1.02)",
-        },
+        "&:hover": { transform: "scale(1.02)" },
+        width: "100%",
       }}
     >
       <CardContent>
@@ -37,16 +42,10 @@ const BlogPost = ({ title, date, image, background, link }) => {
       </CardContent>
 
       <CardContent sx={{ flexGrow: 1, p: 2 }}>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ fontWeight: "bold", color: "#000" }}
-        >
+        <Typography variant="h6" component="div" sx={{ fontWeight: "bold" }}>
           {title}
         </Typography>
-        <Typography variant="caption" sx={{ color: "#000" }}>
-          {date}
-        </Typography>
+        <Typography variant="caption">{date}</Typography>
       </CardContent>
     </Card>
   );

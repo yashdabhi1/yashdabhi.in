@@ -25,15 +25,22 @@ const CarouselItem = styled(Paper)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "#fff",
-  color: "black",
+  backgroundColor: (theme) =>
+    theme.palette.mode === "dark" ? "#1a1a1a" : "#fff",
+  color: (theme) => theme.palette.text.primary,
   padding: theme.spacing(3),
   borderRadius: "8px",
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  boxShadow: (theme) =>
+    theme.palette.mode === "dark"
+      ? "0 4px 8px rgba(255, 255, 255, 0.1)"
+      : "0 4px 8px rgba(0, 0, 0, 0.1)",
   "&:hover": {
     transform: "scale(1.02)",
     transition: "transform 0.3s ease, opacity 0.3s ease-in-out",
-    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15)",
+    boxShadow: (theme) =>
+      theme.palette.mode === "dark"
+        ? "0 6px 12px rgba(255, 255, 255, 0.15)"
+        : "0 6px 12px rgba(0, 0, 0, 0.15)",
   },
 }));
 
@@ -62,7 +69,7 @@ const ProjectCarousel = () => {
       description:
         "Developed a custom Salesforce app to streamline business processes and improve efficiency.",
       buttonText: "View Project",
-      link: "#", // Replace with actual project link
+      link: "#",
     },
     {
       id: 2,
@@ -83,7 +90,7 @@ const ProjectCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-    }, 3000); // Increased interval for better UX
+    }, 3000);
     return () => clearInterval(interval);
   }, [projects.length]);
 
@@ -105,24 +112,31 @@ const ProjectCarousel = () => {
       >
         <Card
           sx={{
-            border: "1px solid #f0f0f0",
-            backgroundColor: "transparent",
+            backgroundColor: (theme) =>
+              theme.palette.mode === "dark" ? "#1a1a1a" : "transparent",
             backdropFilter: "blur(10px)",
             width: { xs: "100%", md: "100%", lg: 1072 },
             maxWidth: "1200px",
             margin: "0 auto",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            boxShadow: (theme) =>
+              theme.palette.mode === "dark"
+                ? "0 4px 12px rgba(255, 255, 255, 0.15)"
+                : "0 4px 12px rgba(0, 0, 0, 0.15)",
             borderRadius: "12px",
           }}
         >
           <CardContent sx={{ padding: { xs: 2, sm: 3, md: 4 } }}>
             <Typography
               variant="h4"
+              gutterBottom
               sx={{
-                color: "#000",
-                marginBottom: { xs: "12px", sm: "16px", md: "20px" },
-                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
-                fontWeight: "bold",
+                color: (theme) => theme.palette.text.primary,
+                fontSize: {
+                  xs: "1.5rem",
+                  sm: "1.8rem",
+                  md: "2rem",
+                  lg: "2.2rem",
+                },
               }}
             >
               PROJECTS
@@ -193,7 +207,10 @@ const ProjectCarousel = () => {
                             "&:hover": {
                               backgroundColor: "#1565c0",
                               transform: "scale(1.05)",
-                              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                              boxShadow: (theme) =>
+                                theme.palette.mode === "dark"
+                                  ? "0 4px 8px rgba(255, 255, 255, 0.2)"
+                                  : "0 4px 8px rgba(0, 0, 0, 0.2)",
                             },
                           }}
                           aria-label={`View ${project.title}`}
