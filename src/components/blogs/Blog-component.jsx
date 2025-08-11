@@ -76,9 +76,9 @@ const BlogComponent = () => {
         experiences. Feel free to drop by, read, and leave your thoughts in the
         comments!
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justifyContent="space-between">
         {blogPosts.map((post, index) => (
-          <Grid item xs={12} sm={6} key={index} sx={{ width: { sm: "48%" } }} display="flex" justifyContent="space-between">
+          <Grid item xs={12} sm={6} key={index} sx={{ width: { sm: "48%" } }} display="flex">
             <BlogPost
               title={post.title}
               date={post.date}

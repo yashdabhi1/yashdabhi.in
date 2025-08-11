@@ -39,5 +39,17 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <svg style="position: absolute; width: 0; height: 0">
+      <filter id="gooey">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix
+          in="blur"
+          mode="matrix"
+          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+          result="gooey"
+        />
+        <feBlend in="SourceGraphic" in2="gooey" />
+      </filter>
+    </svg>
   </body>
 </html>

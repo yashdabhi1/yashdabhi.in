@@ -36,7 +36,7 @@ const Navbar = ({ darkModeToggle }) => {
         sx={{
           backdropFilter: "blur(10px)",
           backgroundColor: (theme) =>
-            theme.palette.mode === "dark" ? "#1a1a1a" : "rgba(249, 249, 249, 0.1)",
+            theme.palette.mode === "dark" ? "rgba(26, 26, 26, 0.1)" : "rgba(249, 249, 249, 0.1)",
           width: isMobile ? "calc(100% - 20px)" : "57%",
           margin: "0 auto",
           mt: "10px",
@@ -85,7 +85,7 @@ const Navbar = ({ darkModeToggle }) => {
                   "& .MuiDrawer-paper": {
                     backdropFilter: "blur(5px)",
                     backgroundColor: (theme) =>
-                      theme.palette.mode === "dark" ? "#1a1a1a" : "rgba(249, 249, 249, 0.1)",
+                      theme.palette.mode === "dark" ? "rgba(26, 26, 26, 0.1)" : "rgba(249, 249, 249, 0.1)",
                     boxShadow: (theme) =>
                       theme.palette.mode === "dark"
                         ? "0 4px 8px rgba(255, 255, 255, 0.2)"

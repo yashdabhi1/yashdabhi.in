@@ -1,8 +1,22 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Typography,useMediaQuery  } from "@mui/material";
 import React from "react";
 import { motion } from "framer-motion";
 
+import { useTheme } from "@mui/material/styles";
+
 const Introduction = () => {
+   const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // <600px
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600px–768px
+
+  let imageSrc = "/YD.jfif"; // default desktop image
+  if (isMobile) {
+    imageSrc = "/YD1.png";
+  } else if (isTablet) {
+    imageSrc = "/YD1.png";
+  }
+
   return (
     <Box
       sx={{
@@ -36,7 +50,7 @@ const Introduction = () => {
         >
           <CardMedia
             component="img"
-            image="/YD.jfif"
+            image={imageSrc}
             alt="Yash's profile image"
             sx={{ width: "100%", height: "100%", objectFit: "cover" }}
           />

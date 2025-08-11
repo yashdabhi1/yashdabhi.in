@@ -55,11 +55,11 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 component={motion.a}
-                whileHover={{ rotate: 360, transition: { duration: 0.5 } }}
+                whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
                 aria-label="Visit GitHub profile"
                 sx={{
                   color: (theme) => theme.palette.text.primary,
-                  "&:hover": { color: "#e6dbc7" },
+                  "&:hover": { color: "rgb(0, 0, 0)" },
                 }}
               >
                 <GitHub
@@ -71,11 +71,11 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 component={motion.a}
-                whileHover={{ rotate: 360, transition: { duration: 0.5 } }}
+                whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
                 aria-label="Visit LinkedIn profile"
                 sx={{
                   color: (theme) => theme.palette.text.primary,
-                  "&:hover": { color: "#e6dbc7" },
+                  "&:hover": { color: "#000000" },
                 }}
               >
                 <LinkedIn
@@ -85,11 +85,11 @@ const Footer = () => {
               <IconButton
                 href="mailto:dabhiyash11111@gmail.com"
                 component={motion.a}
-                whileHover={{ rotate: 360, transition: { duration: 0.5 } }}
+                whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
                 aria-label="Send email"
                 sx={{
                   color: (theme) => theme.palette.text.primary,
-                  "&:hover": { color: "#e6dbc7" },
+                  "&:hover": { color: "#000000" },
                 }}
               >
                 <Email
