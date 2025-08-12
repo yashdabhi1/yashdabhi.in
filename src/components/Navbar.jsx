@@ -40,7 +40,7 @@ const Navbar = ({ darkModeToggle }) => {
           width: isMobile ? "calc(100% - 20px)" : "57%",
           margin: "0 auto",
           mt: "10px",
-          borderRadius: "8px",
+          borderRadius: "35px",
           overflow: "hidden",
           left: 0,
           right: 0

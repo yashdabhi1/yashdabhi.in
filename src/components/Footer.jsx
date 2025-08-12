@@ -59,7 +59,10 @@ const Footer = () => {
                 aria-label="Visit GitHub profile"
                 sx={{
                   color: (theme) => theme.palette.text.primary,
-                  "&:hover": { color: "rgb(0, 0, 0)" },
+                  //"&:hover": { color: "rgb(0, 0, 0)" },
+                  "&:hover":(theme) => ({
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                  }),
                 }}
               >
                 <GitHub
@@ -75,7 +78,9 @@ const Footer = () => {
                 aria-label="Visit LinkedIn profile"
                 sx={{
                   color: (theme) => theme.palette.text.primary,
-                  "&:hover": { color: "#000000" },
+                  "&:hover":(theme) => ({
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                  }),
                 }}
               >
                 <LinkedIn
@@ -89,7 +94,9 @@ const Footer = () => {
                 aria-label="Send email"
                 sx={{
                   color: (theme) => theme.palette.text.primary,
-                  "&:hover": { color: "#000000" },
+                  "&:hover":(theme) => ({
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                  }),
                 }}
               >
                 <Email

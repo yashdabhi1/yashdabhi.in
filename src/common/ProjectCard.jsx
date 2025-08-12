@@ -35,7 +35,7 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
             width: { xs: "100%", md: 220 },
             height: { xs: 200, md: "100%" },
             objectFit: "cover",
-            borderRadius: { xs: "0", md: "12px 0 0 12px" },
+            borderRadius: { xs: "0", md: "12px" },
           }}
           image={image}
           alt={title}
@@ -46,7 +46,7 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
         container
         direction="column"
         justifyContent="space-between"
-        sx={{ flexGrow: 1, px: { xs: 2, md: 3 }, py: { xs: 1.5, md: 2 } }}
+        sx={{ flexGrow: 1, px: { xs: 2, md: 1 }, py: { xs: 1.5, md: 2 } }}
       >
         <CardContent sx={{ paddingBottom: "8px !important" }}>
           <Typography
