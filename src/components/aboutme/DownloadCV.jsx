@@ -56,7 +56,7 @@ function DownloadCV() {
             fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
           }}
         >
-          Namaste! 🙏 Explore my professional journey! Download my CV to
+          Hello! 🙏 Explore my professional journey! Download my CV to
           discover my skills, experience, and projects that showcase my
           expertise and passion.
         </Typography>
@@ -66,8 +66,10 @@ function DownloadCV() {
             startIcon={<DownloadIcon />}
             onClick={handleDownload}
             sx={{
-              backgroundColor: "#fff",
-              color: "#000",
+              backgroundColor: (theme) =>
+                theme.palette.mode === "dark" ? "rgb(234, 234, 234)" : "rgb(0, 0, 0)",
+              color: (theme) =>
+                theme.palette.mode === "dark" ? "#000" : "#fff",
               fontWeight: "bold",
               fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
               textTransform: "none",
@@ -80,8 +82,7 @@ function DownloadCV() {
                   : "0 4px 10px rgba(0, 0, 0, 0.2)",
               transition: "background-color 0.3s ease, transform 0.3s ease",
               "&:hover": {
-                backgroundColor: (theme) =>
-                  theme.palette.mode === "dark" ? "#333" : "rgb(153, 141, 137)",
+                backgroundColor:"rgb(153, 141, 137)",
                 transform: "scale(1.02)",
               },
               "&:focus": {

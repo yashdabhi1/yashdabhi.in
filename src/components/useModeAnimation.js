@@ -11,15 +11,31 @@ const injectBaseStyles = (styleId) => {
       .dark {
         background-color: #1a1a1a;
         color: #ffffff;
+        transition: background-color 750ms ease-in-out, color 750ms ease-in-out;
       }
       .light {
         background-color: #ffffff;
         color: #000000;
+        transition: background-color 750ms ease-in-out, color 750ms ease-in-out;
       }
       ::view-transition-old(root),
       ::view-transition-new(root) {
         animation: none;
         mix-blend-mode: normal;
+      }
+      body {
+        transition: background-color 750ms ease-in-out;
+      }
+      .theme-pulse::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
       }
     `;
     document.head.appendChild(style);
@@ -72,6 +88,11 @@ export const useModeAnimation = ({
     const x = left + width / 2;
     const y = top + height / 2;
 
+    // Apply pulse effect
+    const pulseElement = document.createElement('div');
+    pulseElement.className = 'theme-pulse';
+    document.body.appendChild(pulseElement);
+
     // Fallback to CSS animation if View Transitions API is not supported
     if (!document.startViewTransition) {
       const styleElement = document.createElement('style');
@@ -80,14 +101,39 @@ export const useModeAnimation = ({
         .theme-transition {
           transition: background-color ${duration}ms ${easing}, color ${duration}ms ${easing};
         }
+        body {
+          transition: background-color ${duration}ms ${easing};
+        }
+        .theme-pulse::before {
+          content: '';
+          position: fixed;
+          top: ${y}px;
+          left: ${x}px;
+          width: 0;
+          height: 0;
+          background: radial-gradient(circle, ${isDarkMode ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)'}, transparent);
+          transform: translate(-50%, -50%);
+          animation: pulse-expand ${duration}ms ${easing} forwards;
+          opacity: 1;
+        }
+        @keyframes pulse-expand {
+          to {
+            width: ${Math.max(window.innerWidth, window.innerHeight) * 2}px;
+            height: ${Math.max(window.innerWidth, window.innerHeight) * 2}px;
+            opacity: 0;
+          }
+        }
       `;
       document.head.appendChild(styleElement);
 
+      document.body.classList.add('theme-transition');
+      setIsDarkMode(!isDarkMode);
+
       setTimeout(() => {
         document.head.removeChild(styleElement);
+        document.body.classList.remove('theme-transition');
+        document.body.removeChild(pulseElement);
       }, duration);
-
-      setIsDarkMode(!isDarkMode);
       return;
     }
 
@@ -107,10 +153,33 @@ export const useModeAnimation = ({
       ${pseudoElement} {
         clip-path: circle(0px at ${x}px ${y}px);
         animation: circle-expand ${duration}ms ${easing} forwards;
+        background-color: ${isDarkMode ? '#ffffff' : '#1a1a1a'};
       }
       @keyframes circle-expand {
         to {
           clip-path: circle(${maxRadius}px at ${x}px ${y}px);
+        }
+      }
+      body {
+        transition: background-color ${duration}ms ${easing};
+      }
+      .theme-pulse::before {
+        content: '';
+        position: fixed;
+        top: ${y}px;
+        left: ${x}px;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, ${isDarkMode ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)'}, transparent);
+        transform: translate(-50%, -50%);
+        animation: pulse-expand ${duration}ms ${easing} forwards;
+        opacity: 1;
+      }
+      @keyframes pulse-expand {
+        to {
+          width: ${Math.max(window.innerWidth, window.innerHeight) * 2}px;
+          height: ${Math.max(window.innerWidth, window.innerHeight) * 2}px;
+          opacity: 0;
         }
       }
     `;
@@ -124,6 +193,7 @@ export const useModeAnimation = ({
 
     setTimeout(() => {
       styleElement.remove();
+      document.body.removeChild(pulseElement);
     }, duration);
   };
 
@@ -131,10 +201,12 @@ export const useModeAnimation = ({
     if (isDarkMode) {
       document.documentElement.classList.add(globalClassName);
       document.documentElement.classList.remove('light');
+      document.body.style.backgroundColor = '#1a1a1a';
       localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove(globalClassName);
       document.documentElement.classList.add('light');
+      document.body.style.backgroundColor = '#ffffff';
       localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode, globalClassName]);
