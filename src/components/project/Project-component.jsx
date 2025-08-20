@@ -5,10 +5,10 @@ import ProjectCard from "../../common/ProjectCard";
 
 const projects = [
   {
-    title: "Idea Tracker",
+    title: "News Integration",
     description:
-      "A React + Appwrite app to save, search, and manage side project ideas. Features auth, real-time updates, and a clean UI with Tailwind & Framer Motion.",
-    image: "../SF.jpg",
+      "LWC News Integration is a Lightning Web Component (LWC) designed to dynamically fetch and display news articles from around the world using the NewsAPI." ,
+    image: "../P1.png",
     codeLink: "#",
   },
   {

@@ -65,9 +65,9 @@ const ProjectCarousel = () => {
   const projects = [
     {
       id: 1,
-      title: "Custom App Development",
+      title: "News Integration",
       description:
-        "Developed a custom Salesforce app to streamline business processes and improve efficiency.",
+        "LWC News Integration is a Lightning Web Component (LWC) designed to dynamically fetch and display news articles from around the world using the NewsAPI. ",
       buttonText: "View Project",
       link: "#",
     },
