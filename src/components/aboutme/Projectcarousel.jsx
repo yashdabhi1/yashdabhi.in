@@ -69,7 +69,7 @@ const ProjectCarousel = () => {
       description:
         "LWC News Integration is a Lightning Web Component (LWC) designed to dynamically fetch and display news articles from around the world using the NewsAPI. ",
       buttonText: "View Project",
-      link: "#",
+      link: "https://github.com/yashdabhi1/News-integration",
     },
     {
       id: 2,

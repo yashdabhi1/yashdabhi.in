@@ -9,7 +9,7 @@ const projects = [
     description:
       "LWC News Integration is a Lightning Web Component (LWC) designed to dynamically fetch and display news articles from around the world using the NewsAPI." ,
     image: "../P1.png",
-    codeLink: "#",
+    codeLink: "https://github.com/yashdabhi1/News-integration",
   },
   {
     title: "Librarium",
