@@ -73,18 +73,11 @@ const ProjectCarousel = () => {
     },
     {
       id: 2,
-      title: "Another Project",
-      description: "Description for another project goes here.",
+      title: "Quote Generator",
+      description: "A dynamic Salesforce Lightning Web Component for generating quotes with product selection, quantity input, and PDF export functionality.",
       buttonText: "View Project",
-      link: "#",
-    },
-    {
-      id: 3,
-      title: "Third Project",
-      description: "Description for the third project goes here.",
-      buttonText: "View Project",
-      link: "#",
-    },
+      link: "https://github.com/yashdabhi1/Quote-Generator",
+    }
   ];
 
   useEffect(() => {
