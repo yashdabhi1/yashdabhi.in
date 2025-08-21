@@ -12,11 +12,11 @@ const projects = [
     codeLink: "https://github.com/yashdabhi1/News-integration",
   },
   {
-    title: "Librarium",
+    title: "Quote Generator",
     description:
-      "A full-stack solution with Google and Discord login, powerful search, and complete CRUD operations for seamless book management.",
-    image: "../SF.jpg",
-    codeLink: "#",
+      "A dynamic Salesforce Lightning Web Component for generating quotes with product selection, quantity input, and PDF export functionality.",
+    image: "../P2.png",
+    codeLink: "https://github.com/yashdabhi1/Quote-Generator",
   },
   {
     title: "Portfolio Website",
