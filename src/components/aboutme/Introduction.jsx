@@ -10,11 +10,11 @@ const Introduction = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // <600px
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600px–768px
 
-  let imageSrc = "/YD.jfif"; // default desktop image
+  let imageSrc = "/YD.webp"; // default desktop image
   if (isMobile) {
-    imageSrc = "/YD1.png";
+    imageSrc = "/YD1.webp";
   } else if (isTablet) {
-    imageSrc = "/YD1.png";
+    imageSrc = "/YD1.webp";
   }
 
   return (
