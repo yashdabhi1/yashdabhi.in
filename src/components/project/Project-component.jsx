@@ -17,21 +17,7 @@ const projects = [
       "A dynamic Salesforce Lightning Web Component for generating quotes with product selection, quantity input, and PDF export functionality.",
     image: "../P2.png",
     codeLink: "https://github.com/yashdabhi1/Quote-Generator",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "A personal portfolio website showcasing my skills, projects, and experience with a modern design and responsive layout.",
-    image: "../SF.jpg",
-    codeLink: "#",
-  },
-  {
-    title: "E-commerce Platform",
-    description:
-      "A full-featured e-commerce platform with product listings, shopping cart, and payment integration.",
-    image: "../SF.jpg",
-    codeLink: "#",
-  },
+  }
 ];
 
 const ProjectComponent = () => {
