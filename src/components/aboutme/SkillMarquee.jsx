@@ -1,9 +1,11 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography, useTheme  } from "@mui/material";
 import React from "react";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
 
 const SkillMarquee = () => {
+  const theme = useTheme();
+
   const skills = [
     "Salesforce",
     "Apex",
@@ -18,6 +20,43 @@ const SkillMarquee = () => {
     "Git",
   ];
 
+  const SkillTag = ({ skill, index }) => (
+    <motion.span
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      whileHover={{
+        scale: 1.15,
+        boxShadow:
+          theme.palette.mode === "dark"
+            ? "0 0 15px rgba(255,255,255,0.3)"
+            : "0 0 15px rgba(0,0,0,0.25)",
+      }}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "10px 20px",
+        margin: "0 12px",
+        borderRadius: "12px",
+        fontSize: "1rem",
+        fontWeight: 600,
+        cursor: "pointer",
+        background: theme.palette.mode === "dark"
+          ? "linear-gradient(135deg, #2d2d2d, #1a1a1a)"
+          : "linear-gradient(135deg, #ffffff, #f3f3f3)",
+        color: theme.palette.text.primary,
+        border: `1px solid ${
+          theme.palette.mode === "dark" ? "#444" : "#ddd"
+        }`,
+        transition: "all 0.3s ease",
+      }}
+    >
+      {skill}
+    </motion.span>
+  );
+
   return (
     <Box
       sx={{
@@ -29,7 +68,7 @@ const SkillMarquee = () => {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <Card
           sx={{
@@ -53,95 +92,34 @@ const SkillMarquee = () => {
               variant="h4"
               gutterBottom
               sx={{
-                color: (theme) => theme.palette.text.primary,
-                fontSize: {
-                  xs: "1.5rem",
-                  sm: "1.8rem",
-                  md: "2rem",
-                  lg: "2.2rem",
-                },
+                fontWeight: 700,
+                color: theme.palette.text.primary,
+                letterSpacing: "2px",
               }}
             >
               SKILLS
             </Typography>
             <Marquee
-              pauseOnHover={true}
-              speed={50}
-              direction="right"
+              pauseOnHover
+              speed={40}
               gradient={false}
-              style={{
-                width: "100%",
-                paddingTop: "15px",
-                paddingBottom: "15px",
-              }}
+              style={{ padding: "20px 0" }}
               aria-label="Skills marquee moving right"
             >
               {skills.map((skill, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === "dark" ? "#333" : "#fff",
-                    color: (theme) => theme.palette.text.primary,
-                    padding: "8px 16px",
-                    margin: "0 10px",
-                    borderRadius: "20px",
-                    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-                    fontWeight: "500",
-                    boxShadow: (theme) =>
-                      theme.palette.mode === "dark"
-                        ? "0 2px 4px rgba(255, 255, 255, 0.1)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                  }}
-                  whileHover={{ scale: 1.1, backgroundColor: "#e6dbc7" }}
-                >
-                  {skill}
-                </motion.span>
+                <SkillTag key={index} skill={skill} index={index} />
               ))}
             </Marquee>
             <Marquee
-              pauseOnHover={true}
-              speed={50}
-              direction="left"
+              pauseOnHover
+              speed={40}
               gradient={false}
-              style={{
-                width: "100%",
-                marginTop: "15px",
-                paddingBottom: "10px",
-              }}
+              direction="right"
+              style={{ padding: "20px 0" }}
               aria-label="Skills marquee moving left"
             >
               {skills.map((skill, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === "dark" ? "#333" : "#fff",
-                    color: (theme) => theme.palette.text.primary,
-                    padding: "8px 16px",
-                    margin: "0 10px",
-                    borderRadius: "20px",
-                    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-                    fontWeight: "500",
-                    boxShadow: (theme) =>
-                      theme.palette.mode === "dark"
-                        ? "0 2px 4px rgba(255, 255, 255, 0.1)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                  }}
-                  whileHover={{ scale: 1.1, backgroundColor: "#e6dbc7" }}
-                >
-                  {skill}
-                </motion.span>
+                <SkillTag key={index} skill={skill} index={index} />
               ))}
             </Marquee>
           </CardContent>
