@@ -99,91 +99,97 @@ const ProjectCarousel = () => {
         px: { xs: 2, sm: 3, md: 4, lg: 5 },
       }}
     >
-      <CarouselContainer>
-        <AnimatePresence mode="wait">
-          {projects.map((project, index) =>
-            index === currentIndex ? (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                style={{ width: "100%" }}
-              >
-                <Card
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === "dark"
-                        ? "#1a1a1a"
-                        : "rgba(255, 255, 255, 0.1)",
-                    backdropFilter: "blur(10px)",
-                    boxShadow: (theme) =>
-                      theme.palette.mode === "dark"
-                        ? "0 4px 12px rgba(255, 255, 255, 0.15)"
-                        : "0 4px 12px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "12px",
-                  }}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <CarouselContainer>
+          <AnimatePresence mode="wait">
+            {projects.map((project, index) =>
+              index === currentIndex ? (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  style={{ width: "100%" }}
                 >
-                  <CarouselItem
-                    background={project.image}
-                    sx={{ width: "100%" }}
+                  <Card
+                    sx={{
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === "dark"
+                          ? "#1a1a1a"
+                          : "rgba(255, 255, 255, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: (theme) =>
+                        theme.palette.mode === "dark"
+                          ? "0 4px 12px rgba(255, 255, 255, 0.15)"
+                          : "0 4px 12px rgba(0, 0, 0, 0.15)",
+                      borderRadius: "12px",
+                    }}
                   >
-                    <Box sx={{ zIndex: 1, justifyContent: "center" }}>
-                      <Typography
-                        variant="h5"
-                        sx={{ fontWeight: "bold", mb: 1 }}
-                      >
-                        {project.title}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{ mb: 2, maxWidth: "600px" }}
-                      >
-                        {project.description}
-                      </Typography>
-                      <Button
-                        endIcon={<HiLink />}
-                        variant="contained"
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{
-                          backgroundColor: "#fff",
-                          borderRadius: "25px",
-                          color: "#000",
-                          "&:hover": { backgroundColor: "#fff" },
-                        }}
-                      >
-                        {project.buttonText || "View Project"}
-                      </Button>
-                    </Box>
-                  </CarouselItem>
-                </Card>
-              </motion.div>
-            ) : null
-          )}
-        </AnimatePresence>
+                    <CarouselItem
+                      background={project.image}
+                      sx={{ width: "100%" }}
+                    >
+                      <Box sx={{ zIndex: 1, justifyContent: "center" }}>
+                        <Typography
+                          variant="h5"
+                          sx={{ fontWeight: "bold", mb: 1 }}
+                        >
+                          {project.title}
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          sx={{ mb: 2, maxWidth: "600px" }}
+                        >
+                          {project.description}
+                        </Typography>
+                        <Button
+                          endIcon={<HiLink />}
+                          variant="contained"
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{
+                            backgroundColor: "#fff",
+                            borderRadius: "25px",
+                            color: "#000",
+                            "&:hover": { backgroundColor: "#fff" },
+                          }}
+                        >
+                          {project.buttonText || "View Project"}
+                        </Button>
+                      </Box>
+                    </CarouselItem>
+                  </Card>
+                </motion.div>
+              ) : null
+            )}
+          </AnimatePresence>
 
-        {/* Left/Right Arrows */}
-        <ArrowButton onClick={prevSlide} sx={{ left: "15px" }}>
-          <ArrowBackIos />
-        </ArrowButton>
-        <ArrowButton onClick={nextSlide} sx={{ right: "15px" }}>
-          <ArrowForwardIos />
-        </ArrowButton>
-      </CarouselContainer>
+          {/* Left/Right Arrows */}
+          <ArrowButton onClick={prevSlide} sx={{ left: "15px" }}>
+            <ArrowBackIos />
+          </ArrowButton>
+          <ArrowButton onClick={nextSlide} sx={{ right: "15px" }}>
+            <ArrowForwardIos />
+          </ArrowButton>
+        </CarouselContainer>
 
-      {/* Navigation Dots */}
-      <NavigationDots>
-        {projects.map((_, index) => (
-          <Dot
-            key={index}
-            active={index === currentIndex}
-            onClick={() => handleDotClick(index)}
-          />
-        ))}
-      </NavigationDots>
+        {/* Navigation Dots */}
+        <NavigationDots>
+          {projects.map((_, index) => (
+            <Dot
+              key={index}
+              active={index === currentIndex}
+              onClick={() => handleDotClick(index)}
+            />
+          ))}
+        </NavigationDots>
+      </motion.div>
     </Box>
   );
 };

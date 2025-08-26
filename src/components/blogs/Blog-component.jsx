@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import BlogPost from "../../common/BlogPost";
 
 const blogPosts = [
@@ -64,21 +65,35 @@ const BlogComponent = () => {
         width: { lg: 1100 },
       }}
     >
-      <Typography
-        variant="h4"
-        gutterBottom
-        sx={{ fontWeight: "bold" }}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        Blog Posts
-      </Typography>
-      <Typography variant="body2" sx={{ mb: 4 }}>
-        Check out my latest blog posts where I share insights, tips, and
-        experiences. Feel free to drop by, read, and leave your thoughts in the
-        comments!
-      </Typography>
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+          Blog Posts
+        </Typography>
+        <Typography variant="body2" sx={{ mb: 4 }}>
+          Check out my latest blog posts where I share insights, tips, and
+          experiences. Feel free to drop by, read, and leave your thoughts in
+          the comments!
+        </Typography>
+      </motion.div>
       <Grid container spacing={3} justifyContent="space-between">
         {blogPosts.map((post, index) => (
-          <Grid item xs={12} sm={6} key={index} sx={{ width: { sm: "48%" } }} display="flex">
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            key={index}
+            sx={{ width: { sm: "48%" } }}
+            display="flex"
+            component={motion.div}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.02 }}
+          >
             <BlogPost
               title={post.title}
               date={post.date}
