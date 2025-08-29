@@ -17,6 +17,13 @@ const projects = [
       "A dynamic Salesforce Lightning Web Component for generating quotes with product selection, quantity input, and PDF export functionality.",
     image: "../P2.png",
     codeLink: "https://github.com/yashdabhi1/Quote-Generator",
+  },
+  {
+    title: "Google Drive Integration",
+    description:
+      "This project is a Salesforce implementation that integrates with Google Drive to manage folder creation and file uploads for Account records.",
+    image: "../P3.png",
+    codeLink: "https://github.com/yashdabhi1/Google-Drive-Integration",
   }
 ];
 

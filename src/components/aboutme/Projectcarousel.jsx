@@ -75,6 +75,14 @@ const ProjectCarousel = () => {
       link: "https://github.com/yashdabhi1/Quote-Generator",
       image: "../P2.png",
     },
+    {
+      id: 3,
+      title: "Google Drive Integration",
+      description:
+        "This project is a Salesforce implementation that integrates with Google Drive to manage folder creation and file uploads for Account records.",
+      link: "https://github.com/yashdabhi1/Google-Drive-Integration",
+      image: "../P3.png",
+    }
   ];
 
   useEffect(() => {
