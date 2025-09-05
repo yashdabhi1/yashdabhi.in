@@ -1,6 +1,9 @@
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Typography ,useTheme } from "@mui/material";
 import React from "react";
 import DownloadIcon from "@mui/icons-material/Download";
+import { motion } from "framer-motion";
+const MotionButton = motion(Button);
+
 
 function DownloadCV() {
   const handleDownload = () => {
@@ -12,6 +15,8 @@ function DownloadCV() {
     link.click();
     document.body.removeChild(link);
   };
+
+  const theme = useTheme();
 
   return (
     <Card
@@ -56,12 +61,12 @@ function DownloadCV() {
             fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
           }}
         >
-          Hello! 🙏 Explore my professional journey! Download my CV to
-          discover my skills, experience, and projects that showcase my
-          expertise and passion.
+          Hello! 🙏 Explore my professional journey! Download my CV to discover
+          my skills, experience, and projects that showcase my expertise and
+          passion.
         </Typography>
         <Box sx={{ textAlign: "center", mt: 5 }}>
-          <Button
+          {/* <Button
             variant="contained"
             startIcon={<DownloadIcon />}
             onClick={handleDownload}
@@ -92,7 +97,35 @@ function DownloadCV() {
             }}
           >
             Download Resume
-          </Button>
+          </Button> */}
+          <MotionButton
+            variant="contained"
+            startIcon={<DownloadIcon />}
+            onClick={handleDownload}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            sx={{
+              background:
+                theme.palette.mode === "light"
+                  ? "linear-gradient(110deg, #fff 45%, #e4e4e7 55%, #fff)"
+                  : "linear-gradient(110deg, #000 45%, #333 55%, #000)",
+              backgroundSize: "200% 100%",
+              animation: "shine 5s linear infinite",
+              color: "text.primary",
+              border: "1px solid",
+              borderRadius: "8px",
+              borderColor: "divider",
+              "&:hover": {
+                borderColor: "divider",
+              },
+              "@keyframes shine": {
+                "0%": { backgroundPosition: "200% 0" },
+                "100%": { backgroundPosition: "-200% 0" },
+              },
+            }}
+          >
+            Download Resume
+          </MotionButton>
         </Box>
       </CardContent>
     </Card>
