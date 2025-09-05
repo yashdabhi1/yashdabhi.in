@@ -1,11 +1,19 @@
-import { Box, Card, CardContent, CardMedia, Typography,useMediaQuery  } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import { motion } from "framer-motion";
 
 import { useTheme } from "@mui/material/styles";
+import SplitText from "../../common/SplitText";
 
 const Introduction = () => {
-   const theme = useTheme();
+  const theme = useTheme();
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // <600px
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600px–768px
@@ -77,7 +85,7 @@ const Introduction = () => {
           }}
         >
           <CardContent sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
-            <Typography
+            {/* <Typography
               variant="h3"
               gutterBottom
               sx={{
@@ -91,9 +99,26 @@ const Introduction = () => {
               }}
             >
               Hey, I'm Yash 👋
-            </Typography>
+            </Typography> */}
+            <SplitText
+              tag={isMobile ? 'h2' : 'h1'}
+              text="Hey, I'm Yash Dabhi👋"
+              className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-semibold"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              // textAlign="left"
+              textAlign={isMobile ? 'center' : 'left'}
+            />
+
             <Typography
               variant="h6"
+              textAlign={isMobile ? 'center' : 'left'}
               sx={{
                 mb: 2,
                 fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
@@ -106,6 +131,7 @@ const Introduction = () => {
             </Typography>
             <Typography
               variant="body1"
+              textAlign={isMobile ? 'center' : 'left'}
               sx={{
                 mb: 1,
                 fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
