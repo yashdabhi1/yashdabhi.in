@@ -4,12 +4,16 @@ import {
   CardMedia,
   CardContent,
   Typography,
-  Button,
   CardActions,
   Grid,
+  Button,
+  useTheme,
 } from "@mui/material";
+import { motion } from "framer-motion";
+const MotionButton = motion(Button);
 
 const ProjectCard = ({ title, description, image, codeLink }) => {
+  const theme = useTheme();
   return (
     <Card
       sx={{
@@ -66,7 +70,7 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
         </CardContent>
 
         <CardActions>
-          <Button
+          {/* <Button
             size="small"
             href={codeLink}
             variant="contained"
@@ -80,7 +84,34 @@ const ProjectCard = ({ title, description, image, codeLink }) => {
             }}
           >
             🛠 View Code
-          </Button>
+          </Button> */}
+
+          <MotionButton
+            variant="contained"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            sx={{
+              background:
+                theme.palette.mode === "light"
+                  ? "linear-gradient(110deg, #fff 45%, #e4e4e7 55%, #fff)"
+                  : "linear-gradient(110deg, #000 45%, #333 55%, #000)",
+              backgroundSize: "200% 100%",
+              animation: "shine 5s linear infinite",
+              color: "text.primary",
+              border: "1px solid",
+              borderRadius: "8px",
+              borderColor: "divider",
+              "&:hover": {
+                borderColor: "divider",
+              },
+              "@keyframes shine": {
+                "0%": { backgroundPosition: "200% 0" },
+                "100%": { backgroundPosition: "-200% 0" },
+              },
+            }}
+          >
+            🛠 View Code
+          </MotionButton>
         </CardActions>
       </Grid>
     </Card>
