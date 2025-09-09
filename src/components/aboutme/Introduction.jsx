@@ -124,7 +124,7 @@ const Introduction = () => {
                 fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
               }}
             >
-              Salesforce Developer with several years of hands-on experience in
+              I’m a Salesforce Developer with several years of hands-on experience in
               designing and implementing scalable, secure, and user-centric
               solutions across Sales Cloud, Service Cloud, and custom Lightning
               applications.
