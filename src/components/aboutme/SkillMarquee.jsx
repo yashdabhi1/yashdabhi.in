@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography, useTheme  } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
@@ -22,7 +22,6 @@ const SkillMarquee = () => {
 
   const SkillTag = ({ skill, index }) => (
     <motion.span
-      key={index}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
@@ -43,13 +42,12 @@ const SkillMarquee = () => {
         fontSize: "1rem",
         fontWeight: 600,
         cursor: "pointer",
-        background: theme.palette.mode === "dark"
-          ? "linear-gradient(135deg, #2d2d2d, #1a1a1a)"
-          : "linear-gradient(135deg, #ffffff, #f3f3f3)",
+        background:
+          theme.palette.mode === "dark"
+            ? "linear-gradient(135deg, #2d2d2d, #1a1a1a)"
+            : "linear-gradient(135deg, #ffffff, #f3f3f3)",
         color: theme.palette.text.primary,
-        border: `1px solid ${
-          theme.palette.mode === "dark" ? "#444" : "#ddd"
-        }`,
+        border: `1px solid ${theme.palette.mode === "dark" ? "#444" : "#ddd"}`,
         transition: "all 0.3s ease",
       }}
     >
@@ -61,70 +59,87 @@ const SkillMarquee = () => {
     <Box
       sx={{
         width: "100%",
-        px: { xs: 2, sm: 3, md: 4 },
-        py: { xs: 3, sm: 4, md: 5 },
+        maxWidth: "1072px",
+        mx: "auto",
+        position: "relative",
+        overflow: "hidden",
+        mb: 3,
+        py: { xs: 2, sm: 3, md: 4 },
       }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+      <Typography
+        variant="h4"
+        gutterBottom
+        sx={{
+          fontWeight: 700,
+          color: theme.palette.text.primary,
+          letterSpacing: "2px",
+          textAlign: "center",
+          mt: 3,
+          mb: 3,
+        }}
       >
-        <Card
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "dark"
-                ? "#1a1a1a"
-                : "rgba(255, 255, 255, 0.1)",
-            backdropFilter: "blur(10px)",
-            width: { xs: "100%", md: "100%", lg: 1072 },
-            maxWidth: "1200px",
-            margin: "0 auto",
-            boxShadow: (theme) =>
-              theme.palette.mode === "dark"
-                ? "0 4px 12px rgba(255, 255, 255, 0.15)"
-                : "0 4px 12px rgba(0, 0, 0, 0.15)",
-            borderRadius: "12px",
-          }}
+        SKILLS
+      </Typography>
+
+      {/* Marquee with overlays */}
+      <Box sx={{ position: "relative", overflow: "hidden" }}>
+        <Marquee
+          pauseOnHover
+          speed={40}
+          gradient={false}
+          style={{ padding: "20px 0" }}
+          aria-label="Skills marquee moving right"
         >
-          <CardContent sx={{ padding: { xs: 3, sm: 4, md: 5 } }}>
-            <Typography
-              variant="h4"
-              gutterBottom
-              sx={{
-                fontWeight: 700,
-                color: theme.palette.text.primary,
-                letterSpacing: "2px",
-              }}
-            >
-              SKILLS
-            </Typography>
-            <Marquee
-              pauseOnHover
-              speed={40}
-              gradient={false}
-              style={{ padding: "20px 0" }}
-              aria-label="Skills marquee moving right"
-            >
-              {skills.map((skill, index) => (
-                <SkillTag key={index} skill={skill} index={index} />
-              ))}
-            </Marquee>
-            <Marquee
-              pauseOnHover
-              speed={40}
-              gradient={false}
-              direction="right"
-              style={{ padding: "20px 0" }}
-              aria-label="Skills marquee moving left"
-            >
-              {skills.map((skill, index) => (
-                <SkillTag key={index} skill={skill} index={index} />
-              ))}
-            </Marquee>
-          </CardContent>
-        </Card>
-      </motion.div>
+          {skills.map((skill, index) => (
+            <SkillTag key={index} skill={skill} index={index} />
+          ))}
+        </Marquee>
+        <Marquee
+          pauseOnHover
+          speed={40}
+          gradient={false}
+          direction="right"
+          style={{ padding: "20px 0" }}
+          aria-label="Skills marquee moving left"
+        >
+          {skills.map((skill, index) => (
+            <SkillTag key={index} skill={skill} index={index} />
+          ))}
+        </Marquee>
+
+        {/* Gradient overlays ON TOP of the marquee */}
+        <Box
+          sx={{
+            position: "absolute",
+            zIndex: 1,
+            top: 0,
+            left: 0,
+            width: "60px",
+            height: "100%",
+            background:
+              theme.palette.mode === "dark"
+                ? "linear-gradient(to right, #1a1a1a, transparent)"
+                : "linear-gradient(to right, #ffffff, transparent)",
+            pointerEvents: "none",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            zIndex: 1,
+            top: 0,
+            right: 0,
+            width: "60px",
+            height: "100%",
+            background:
+              theme.palette.mode === "dark"
+                ? "linear-gradient(to left, #1a1a1a, transparent)"
+                : "linear-gradient(to left, #ffffff, transparent)",
+            pointerEvents: "none",
+          }}
+        />
+      </Box>
     </Box>
   );
 };
