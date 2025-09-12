@@ -11,7 +11,7 @@ function Workexperience() {
       image: <img src="/Kiva.png" alt="Kiva Infotech" loading="lazy" />,
       company: "Kiva Infotech",
       title: "Salesforce Developer",
-      date: "Nov 2024- Present",
+      date: "Nov 2024 - Present",
     },
     {
       image: <img src="/Kiva.png" alt="Kiva Infotech" loading="lazy" />,
