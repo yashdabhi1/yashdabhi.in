@@ -3,14 +3,14 @@ import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 
 const BlogPost = ({ title, date, image, background, link }) => {
   const handleCardClick = () => {
-    window.location.href = link;
+    window.open(link, '_blank');
   };
   return (
     <Card
       onClick={handleCardClick}
       sx={{
         display: "flex",
-
+        
         justifyContent: "space-between",
         flexDirection: "column",
         height: "100%",
